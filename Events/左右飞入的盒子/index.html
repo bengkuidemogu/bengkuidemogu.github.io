@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: cadetblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:1vh;
+        }
+        div {
+            height: 20vh;/*100vh => 视口高*/
+            width: 35vh;/*10vh => 十分之一的视口宽*/
+            background-color: #ccc;
+            border: 3px solid black;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4vh;
+            transform: translateX(-700px);
+            opacity: 0;
+            transition: 1s;
+        }
+        div:nth-of-type(even){
+            transform: translateX(700px);
+        }
+        h1{
+            font-size: 7vh;
+        }
+        div.show{
+            transform: translate(0);
+            opacity: 1;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>拖动滚动条查看效果</h1>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <div>你好JavaScript</div>
+    <script>
+        //拖动滚动条,有条件添加或删除show
+        const divArr = document.querySelectorAll("div")
+        showFn()
+        window.addEventListener("scroll",showFn)
+        function showFn(){
+    divArr.forEach((div) =>{
+        if(parseInt(div.getBoundingClientRect().top)< window.innerHeight/6*5){
+            div.classList.add("show")
+        }else{
+            div.classList.remove("show")
+        }
+        })
+    }
+    </script>
+</body>
+
+</html>

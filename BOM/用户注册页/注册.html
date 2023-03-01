@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="reg">
+        <h1>欢迎注册网易邮箱</h1>
+         <!-- form表单域:收集用户信息的区域 -->
+         <!-- action:指定接收表单数据的文件地址 -->
+         <!-- marhod:发送数据的方式:1get方式,2post方式 -->
+        <form action="index.html" method="get">
+            <ul>
+                <!-- 邮箱 -->
+                <li><input type="email" placeholder="电子邮件" name="email"></li>
+                <!-- 密码 -->
+                <li><input type="password" placeholder="密码" name="pwd"></li>
+                <!-- 手机号 -->
+                <li><input type="tel" placeholder="手机号码" name="phone"></li>
+            </ul>
+            <p><input type="checkbox">阅读并接受 《服务条款》和 《隐私政策》</p>
+            <!-- 当input的type为submit时,就是一个提交按钮. -->
+            <input type="submit" value="立即注册">
+            <!-- type为reset时清空 -->
+            <p>通过手机号快速注册@163.com</p>
+        </form>
+    </div>
+</body>
+</html>

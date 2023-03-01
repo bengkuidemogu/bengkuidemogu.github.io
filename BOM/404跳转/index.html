@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: cadetblue;
+            opacity: .5;
+        }
+        h1{
+            color: antiquewhite;
+            width: 700px;
+            height: 300px;
+            padding: 20px;
+            background-color: black;
+            opacity: .5;
+            margin: 50px auto;
+            line-height: 300px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>页面没有找到5秒钟之后将会带您进入新浪首页!</h1>
+    <script>
+    const h1 = document.querySelector("h1")
+        let timer
+        let num = 5
+        jump()
+        clearInterval(timer)
+           function jump(){
+                
+                if(num === 0){
+                  document.location = "https://www.sina.com.cn/"
+                    clearInterval(timer)
+                    return
+                }else{
+                    h1.innerHTML = "页面没有找到"+num+"秒钟之后将会带您进入新浪首页!"
+                    num--
+                }
+            }
+            timer = window.setInterval(jump,1000)
+    </script>
+</body>
+</html>

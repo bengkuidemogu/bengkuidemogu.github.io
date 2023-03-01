@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+</head>
+<body>
+<div class="success">
+    <p>
+        恭喜主持成功
+    </p>
+    <ul>
+        <li>邮箱地址:xxxx@126.com</li>
+        <li>密码:219084</li>
+        <li>手机号:13578950527</li>
+    </ul>
+    <script>
+        //Location.search
+        const liArr = document.querySelectorAll("li")
+        const queryStr = window.location.search
+        const arr = queryStr.slice(1).split("&")
+        let email = arr[0].slice(6)
+        let pwd  =  arr[1].slice(4)
+        let phone = arr[2].slice(6)
+        console.log(email,pwd,phone);
+         window.addEventListener("load",function(){
+            liArr[0].innerHTML = `邮箱地址:${email}`
+            liArr[1].innerHTML = `密码:${pwd}`
+            liArr[2].innerHTML = `手机号:${phone}`
+        })
+        // let obj = new URL(location.href).searchParams
+        // let [email,pwd,phone] = [obj.get("email"),obj.get("pwd"),obj.get("phone")]
+        // console.log(email);
+        // const liArr = document.querySelectorAll("li")
+        // window.addEventListener("load",function(){
+        //     liArr[0].innerHTML = `邮箱地址:${email}`
+        //     liArr[1].innerHTML = `密码:${pwd}`
+        //     liArr[2].innerHTML = `手机号:${phone}`
+        // })
+    </script>
+</div>
+</body>
+</html>
