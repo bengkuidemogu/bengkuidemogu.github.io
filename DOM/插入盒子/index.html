@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 50px;
+            height: 50px;
+            margin: 3px;
+            border: 3px solid black;
+            display: inline-block;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>选择一个盒子 再点击按钮</p>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+    <button class="before">前插</button>
+    <button class="after">后插</button>
+    <button class="reset">重置</button>
+
+    <script>
+        //需求： 
+        //1.选中盒子：点击任意一个盒子，选中点击的盒子 
+        //2.前插功能：点击前插按钮，再选中的盒子前面插入一个新盒子（随机色） 
+        //3.后插功能：点击后插按钮，再选中的盒子后面插入一个先盒子（随机色） 
+        //4.重置功能：点击重置按钮，恢复APP的初始状态 
+        //5.初始化功能：刷新页面，恢复APP的初始状态 
+        //6.随机色功能：为新创建的盒子添加随机色 
+
+        //获取元素 
+        const beforeBtn = document.querySelector('.before')
+        const afterBtn = document.querySelector('.after')
+        const resetBtn = document.querySelector('.reset')
+        const box = document.querySelector('section')
+        let activeEleme = null
+        //初始化 
+        function init() {
+            const boxArr = document.querySelectorAll('section div')
+            for (let i = 0; i < boxArr.length; i++) {
+                addEvent(boxArr[i])
+            }
+        }
+        init()
+
+        //点击前插按钮 
+        beforeBtn.addEventListener('click', () => {
+            //做什么 
+            let tempDiv = document.createElement('div')
+            //添加随机背景色？？？？ 
+            tempDiv.style.backgroundColor = color(255, 100)
+            if (activeEleme) {
+                // insertAdjacentElement() 方法将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。 
+                activeEleme.insertAdjacentElement('beforeBegin', tempDiv)
+            }
+            addEvent(tempDiv)
+        })
+
+        //点击后插按钮 
+        afterBtn.addEventListener('click', () => {
+            //做什么 
+            let tempDiv = document.createElement('div')
+            //添加随机背景色？？？？ 
+            tempDiv.style.backgroundColor = color(255, 10)
+            if (activeEleme) {
+                activeEleme.insertAdjacentElement('afterEnd', tempDiv)
+            }
+            addEvent(tempDiv)
+        })
+
+        //点击重置按钮 
+        resetBtn.addEventListener("click", () => {
+            while (box.firstChild) {
+                box.removeChild(box.firstChild)
+            }
+            for (let j = 0; j < 4; j++) {
+                let tempDiv = document.createElement("div")
+                box.appendChild(tempDiv)
+                addEvent(tempDiv)
+            }
+        })
+        //注册点击事件函数 
+        function addEvent(ele) {
+            ele.addEventListener('click', function () {
+                //清空所有 
+                const boxArr2 = document.querySelectorAll('section div')
+                for (let j = 0; j < boxArr2.length; j++) {
+                    boxArr2[j].style.borderColor = 'black'
+                }
+                //边框变色 
+                ele.style.borderColor = 'aqua'
+                //存储目标元素 
+                activeEleme = this
+            })
+        }
+        //随机函数 
+        function color(max, min) {
+            // return `rgb(${Math.random()*(max-min) + min} + ${Math.random()*(max-min)+ min} + ${Math.random()*(max-min)+ min})` 
+            return `rgb(${Math.random() * (max - min) + min},${Math.random() * (max - min) + min},${Math.random() * (max - min) + min})`
+        } 
+    </script>
+
+</body>
+
+</html>
