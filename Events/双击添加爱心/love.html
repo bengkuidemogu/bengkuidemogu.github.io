@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3602617_vmffpwkv7o.css">
+    <style>
+        .age {
+            width: 600px;
+            height: 860px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            background-image: url("./img/车子.jpg");
+            background-size: cover;
+        }
+        h1{
+            width: 270px;
+            margin: 0 auto;
+        }
+        img {
+            width: 600px;
+        }
+        .iconfont {
+            position: absolute;
+            /* font-size: 200px; */
+            /* transform: scale(5); */
+            color: brown;
+           transition: 1.2s;
+        }
+        .active{
+          
+            display: block;
+            /* font-size: 250px; */
+            /* transform: scale(16); */
+            /* transform: translate(-50%,-50%);元素的百分之50 */
+            animation: big 1s linear;
+        }
+        @keyframes big {
+            from{
+                opacity: .0;
+                transform: scale(5);
+            }
+            to{
+                transform: scale(16);
+                opacity: .7;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>双击点赞加爱心</h1>
+    <div class="age">
+        <div class="box">
+        </div>
+    </div>
+    <script>
+        const age = document.querySelector(".age")
+        //获取到鼠标的坐标
+        //i的坐标= 鼠标点击的坐标 - age的视口坐标 - i的高度/2
+        let tiemr1
+        age.addEventListener("dblclick", function (ev) {
+            let i = document.createElement("i")
+            i.classList.add('iconfont')
+            i.classList.add("icon-aixin")
+            age.appendChild(i)
+                i.style.left = ev.pageX - age.offsetLeft - (i.offsetWidth/2) + "px";
+                i.style.top = ev.pageY - age.offsetTop - (i.offsetHeight/2) + "px";
+                i.classList.add("active")
+            tiemr1 = setTimeout(()=> {
+                i.remove()
+            }, 1000)
+        })
+    </script>
+</body>
+</html>
