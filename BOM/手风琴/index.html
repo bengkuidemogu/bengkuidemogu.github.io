@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        button,
+        body,
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #accordion {
+            width: 50vw;
+        }
+
+        button {
+            background-color: rgb(112, 112, 112);
+            width: 100%;
+            border: none;
+            padding: 10px 10px;
+            text-align: left;
+            position: relative;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: rgb(86, 86, 86);
+            cursor: pointer;
+        }
+
+        button::after {
+            content: "+";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            font-size: 1.7rem;
+            transform: translateY(-50%);
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: rgb(199, 190, 190);
+            /* transition:.8s; */
+        }
+
+        p {
+            padding: 20px;
+        }
+
+        .active::after {
+            content: "-";
+        }
+
+        .active+.content {
+            transition: 1s;
+            max-height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 手风琴：accordion -->
+    <section id="accordion">
+        <div class="item">
+            <button>第一部分：HTML</button>
+            <div class="content">
+                <p>
+                    JavaScript中NumberMAXSAFEINTEGER表示最大安全数字，计算结果是9007199254740991,即在这个数范围内不会出现精度丢失
+                    (小数除外)。但是一旦超过这个范围，js就会出现计算不准确的情况，这在大数计算的时候不得不依靠一些第三方库进行解决，因此官方提出了BigInt来解决此问题。
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <button>第一部分：HTML</button>
+            <div class="content">
+                <p>
+                    JavaScript中Number.MAX_SAFE_INTEGER表示最大安全数大数计算的时候不得不依靠一些第三方库进行解决，因此官方提出了BigInt来解决此问题。
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <button>第一部分：HTML</button>
+            <div class="content">
+                <p>
+                    JavaScript中Number.MAX_SAFE_INTEGER表示最大安全数大数计算的时候不得不依靠一些第三方库进行解决，因此官方提出了BigInt来解决此问题。
+                </p>
+            </div>
+        </div>
+    </section>
+    <script>
+        const divArr = document.querySelectorAll(".content")
+        const btnArr = document.querySelectorAll("button")
+        let last = btnArr[0]
+        btnArr.forEach((btn) => btn.addEventListener("click", (ev) => {
+            //2:清除上一个的active
+            if (btn.classList.contains("active")) {
+                btn.classList.toggle("active")
+            } else {
+                last.classList.remove("active")
+                //1.加类
+                btn.classList.add("active")
+                //3.修改last当前点击的btn
+            }
+            last = btn
+        }))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            background-color: cornflowerblue;
+            display: block;
+            width: 100px;
+            height: 50px;
+            position: relative;
+            border-radius: 25px;
+        }
+
+        input {
+            margin: 0;
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            left: 8px;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        label span {
+            background-color: rgb(75, 75, 75);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 25px;
+        }
+
+        label span::before {
+            content: "";
+            text-align: center;
+            line-height: 46px;
+            color: rgb(44, 22, 22);
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            height: 46px;
+            width: 46px;
+            background-color: #ddd;
+            border-radius: 25px;
+            transition: .5s;
+        }
+
+        input:checked {
+            transform: translate(50px);
+        }
+
+        input:checked+span::before {
+            transform: translate(50px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="btn">
+            <h2>好</h2>
+        </div>
+        <label for="">
+            <input type="checkbox" name="" id="">
+            <span></span>
+        </label>
+    </div>
+    <div id="app">
+        <div class="btn">
+            <h2>便宜</h2>
+        </div>
+        <label for="">
+            <input type="checkbox" name="" id="">
+            <span></span>
+        </label>
+    </div>
+    <div id="app">
+        <div class="btn">
+            <h2>快</h2>
+        </div>
+        <label for="">
+            <input type="checkbox" name="" id="">
+            <span></span>
+        </label>
+    </div>
+    <script>
+        const divArr = document.querySelectorAll(".btn")
+        const input1 = document.querySelectorAll("input")[0]
+        const input2 = document.querySelectorAll("input")[1]
+        const input3 = document.querySelectorAll("input")[2]
+
+        divArr.forEach(div=>addEventListener("change",(ev)=>{
+            if(input1.checked && input2.checked && input3.checked){
+                input3.checked = false
+            }
+            if(input1=== ev.target){
+                input2.checked = false
+            }
+            if(input2=== ev.target){
+                input1.checked = false
+            }
+            if(input3=== ev.target){
+                input2.checked = false
+            }
+        }))
+    </script>
+</body>
+
+</html>

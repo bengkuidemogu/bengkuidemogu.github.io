@@ -9,11 +9,11 @@
 7. <a href = "\Events\双击添加爱心\love.html">双击添加爱心("dblclick")</a>
    <p>需求描述：1.双击图片显示红心  2.红信随着鼠标显示 3.红心使用特效显示 4.显示完毕再消失</p>
    <p>技术描述：1.dbclick事件 + 在线图标 + 创建新元素(document.createElement()) + appendChild() 2.i的标签的left/top =    mouseX/mouseY - div.offsetLeft/div.offsetTop - 红心的宽度的一半 3.使用 @keyframes创建动画效果</p>
-   ## js作业库 2023-3-2
+## js作业库 2023-3-2
 8. <a href = "\Events\隐藏的搜索框\index.html">隐藏的搜索框("mouseover mouseout")</a>
    <p>需求描述：1.鼠标悬停放大搜索框 2.鼠标离开搜索框变回原始状态</p>
    <p>技术描述：1.mouseover鼠标悬停时触发事件，加宽搜索框  2.mouseout鼠标离开时触发，搜索框宽度变回原始状态</p>
-9. <a href = "\Events\登录框波浪交互\index.html">登录框波浪交互</a>
+9. <a href = "\BOM\登录框波浪交互\index.html">登录框波浪交互</a>
 10. <a href = "\DOM\猜class名\index.html">猜class</a>
 11. <a href = "\DOM\激活主导航\index.html">激活主导航</a>
 12. <a href = "\DOM\插入盒子\index.html">插入盒子</a>
@@ -21,4 +21,12 @@
 14. <a href = "\switch按钮\index.html">switch按钮</a>
 15. <a href = "\DOM\百万富翁\index.html">百万富翁</a>
 16. <a href = "\DOM\属性清除器\index.html">属性清除器</a>
+## js作业库 2023-3-3
+18. <a href = "\Events\Switch按钮1\index.html">Switch按钮1</a>
+19. <a href = "\Events\Switch按钮2\index.html">Switch按钮2
+20. <a href = "\DOM\选择APP\index.html">选择APP</a>
+21. <a href = "\BOM\手风琴\index.html">手风琴效果</a>
+22. <a href = "\DOM\QQ列表\index.html">QQ列表</a>
+23. <a href = "\BOM\常见问题效果\index.html">常见问题效果</a>
+24. <a href = "\DOM\鼠标格子\index.html">鼠标格子</a>
     

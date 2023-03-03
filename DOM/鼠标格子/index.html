@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #app {
+            width: 214vh;
+            height: 99vh;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            width: 46px;
+            height: 46px;
+            border: 2px solid rgb(114, 104, 104);
+            background-color: black;
+            gap: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- 鼠标悬停在div上面修改背景色 -->
+    <script>
+        const div = document.querySelector("#app")
+        let divArr
+        for (let i = 0; i < 817; i++) {
+            div.innerHTML += "<div class = 'content'></div>"
+        }
+        divArr = document.querySelectorAll(".content")
+        let tiemr
+        divArr.forEach(div => {
+            div.addEventListener("mouseover", function () {
+                div.style.background = rgb()
+            })
+            div.addEventListener("mouseout", function () {
+                tiemr = setTimeout(function () {
+                    div.style.background = "black"
+                }, 1000)
+            })
+        })
+        function rgb() {//rgb颜色随机
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r},${g},${b})`;
+        }
+
+    </script>
+</body>
+
+</html>
