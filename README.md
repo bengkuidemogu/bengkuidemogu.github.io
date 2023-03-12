@@ -26,7 +26,11 @@
 19. <a href = "\Events\Switch按钮2\index.html">Switch按钮2
 20. <a href = "\DOM\选择APP\index.html">选择APP</a>
 21. <a href = "\BOM\手风琴\index.html">手风琴效果</a>
+     <p>需要描述：1.点击按钮展开内容 2.悬停按钮，背景变色，光标变手 3.再次点击同一个按钮，折叠内容 - 变 + 4.点击下一个，折叠上一个 5.展开折叠存在过度。</p>
 22. <a href = "\DOM\QQ列表\index.html">QQ列表</a>
 23. <a href = "\BOM\常见问题效果\index.html">常见问题效果</a>
 24. <a href = "\DOM\鼠标格子\index.html">鼠标格子</a>
+   <p>需要描述：1.批量生成800左右的div。2.鼠标悬停在div身上修改它的背景色为随机色。并且让随机色拥有光晕。3.鼠标离开后，1s左右，让颜色过度回到初始色。</p>
+25. <a href = "\AJAX\懒加载\index.html">懒加载</a>
+26. <a href = "\DOM\鼠标格子\index.html">Github用户资料查询</a>
     
