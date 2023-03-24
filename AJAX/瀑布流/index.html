@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            width: 900px;
+            height: auto;
+            margin: 0 auto;
+            position: relative;
+        }
+        .waterDiv{
+            position: absolute;
+        }
+        .img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script>
+        const url = `https://api.unsplash.com/photos/random?count=10&client_id=Nfi7EEpoGt0274QdYcwQigIIZgMuvMPtwJpGngiCW3s`
+        //1:8dQfZAo-GsiyK3t2i7CUx7icKl2CnJRm77Apw5Pwvag
+        //2:9Hc4WIXys1rJ8tGUZ_FcbikRf9v0Tord1njIGle70GI
+        let heightArr = [0, 0, 0]
+        function getMinHeightIndex(arr){
+            return Math.min.apply(null,arr)
+        }
+        getMinHeightIndex(heightArr)
+        const col = 3
+        const app = document.querySelector("#app")
+        let num = 0
+        function waterFall(API) {
+            num++
+            //解析数据: async ... await(必须出现在async内部)
+            let fetchData = async function (API) {//目标：返回一个带着数据的promise,
+                //获取数据:fetch()
+                // let data = fetch(API)//返回promise => value:response对象
+                // let data = await fetch(API)//返回Response对象 => value:response对象
+                // console.log(await data.json());// 通过promise获取到成功的值
+                return await (await fetch(API)).json()
+            }
+            fetchData(API).then(data => { //使用回调渲染页面
+               data.forEach(element => { 
+                let div = document.createElement("div")
+                let img = document.createElement("img")
+                div.className = "waterDiv"
+                img.className = "waterImg"
+                img.src= element.urls.small
+                //设置div的宽度 = 
+                div.style.width =app.offsetWidth /col + "px"
+                div.style.height = app.offsetWidth/col+element.height/element.width+"px"
+                div.style.top = heightArr[getMinHeightIndex(heightArr)]+ "px"
+                div.style.left = getMinHeightIndex(heightArr)*parseInt(div.style.width)+ "px"
+                heightArr[getMinHeightIndex(heightArr)]+= parseInt(div.style.height)
+                div.appendChild(img)
+                app.appendChild(div)
+               });
+            })
+        }
+       waterFall(url)
+        //渲染
+        const h1  = document.createElement("h1")
+        window.addEventListener("scroll",()=>{
+            const {scrollHeight:a,scrollTop:b,clientHeight:c}= document.documentElement
+            console.log(a,b);
+            if(a + b >= c && num < 6 && num > 0){
+            
+               setInterval(function(){
+                //  waterFall(url)
+               },1500)
+            }else{
+
+            }
+        })
+    </script>
+</body>
+
+</html>

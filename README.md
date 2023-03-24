@@ -33,4 +33,11 @@
    <p>需要描述：1.批量生成800左右的div。2.鼠标悬停在div身上修改它的背景色为随机色。并且让随机色拥有光晕。3.鼠标离开后，1s左右，让颜色过度回到初始色。</p>
 25. <a href = "\AJAX\懒加载\index.html">懒加载</a>
 26. <a href = "\DOM\鼠标格子\index.html">Github用户资料查询</a>
-    
+## js作业库 2023-3-24
+27. <a href = "BOM\选项卡轮播\index.html">选项卡轮播</a>
+28. <a href = "\BOM\添加书籍\index.html">添加书籍</a>
+29. <a href = "\AJAX\瀑布流\index.html">瀑布流</a>
+30. <a href = "\导航栏外部样式\index.html">导航栏外部样式</a>
+31. <a href = "\BOM\map\index.html">map练习</a>
+32. <a href = "\app\index.html">js模块化</a>
+33. <a href = "calss类\index.html">class类的使用</a>

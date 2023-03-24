@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin: 10px;
+        }
+
+        .pag div button {
+            width: 50px;
+            height: 20px;
+            margin: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+        p{
+            width: 200px;
+            height: 20px;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pag">
+        <h1>添加书籍</h1>
+        <hr>
+        <p></p>
+        <div>
+            <label for="">
+                标题
+                <input type="text" class="ip1">
+            </label>
+            <label for="">
+                作者
+                <input type="text" class="ip2">
+            </label>
+            <label for="">
+                LSBN
+                <input type="text" class="ip3">
+            </label>
+            <button>提交</button>
+        </div>
+        <table>
+            <tr>
+                <td>书籍</td>
+                <td>作者</td>
+                <td>LSBN</td>
+                <td>备注</td </tr>
+        </table>
+    </div>
+    <script>
+          //1.面向对象
+        function AddBooks(id) {
+            this.pag = document.querySelector(id)
+            this.btn = this.pag.querySelector("button")
+            this.inputArr = this.pag.querySelectorAll("input")
+            this.table = this.pag.querySelector("table")
+            this.p = this.pag.querySelector("p")
+            //存储书名，作者，LSBN
+            this.title
+            this.author
+            this.LSBN
+            //存储删除按钮
+            this.detela
+            let This = this
+            this.btn.addEventListener("click", function (ev) {
+                console.log(This);
+                console.log(This.inputArr);
+                This.tr
+                This.p.innerHTML = " "
+                if (This.inputArr[0].value === "" || This.inputArr[1].value === "" || This.inputArr[2].value === "") {
+                    This.p.innerHTML = "你干嘛不填啊，哎呦"
+                } else {
+                    This.title = This.inputArr[0].value
+                    This.author = This.inputArr[1].value
+                    This.LSBN = This.inputArr[2].value
+                    This.tr = document.createElement("tr")
+                    This.tr.innerHTML = `
+                <td>${This.title}</td>
+                <td>${This.author}</td>
+                <td>${This.LSBN}</td>
+                <td><a href = "#" id= "a">删除<a/></td>
+            `
+                    This.table.appendChild(This.tr)
+                    This.detela = This.tr.querySelector("#a")
+                    This.detela.addEventListener("click", function (ev) {
+                        This.detela.parentElement.parentElement.remove()
+                    })
+                }
+            })
+        }
+        const pag1 = new AddBooks("#pag")
+        // //1.面向过程
+        // const btn = document.querySelector("button")
+        // const inputArr = document.querySelectorAll("input")
+        // const table = document.querySelector("table")
+        // const p = document.querySelector("p")
+        // //存储书名，作者，LSBN
+        // let title
+        // let author
+        // let LSBN
+        // //存储删除按钮
+        // let detela 
+        // btn.addEventListener("click", function () {
+        //     p.innerHTML = " "
+        //     if (inputArr[0].value === "" ||inputArr[1].value=== ""|| inputArr[2].value=== "") {
+        //         p.innerHTML = "你干嘛不填啊，哎呦"
+        //     } else{
+        //         title = inputArr[0].value
+        //         author = inputArr[1].value
+        //         LSBN = inputArr[2].value
+        //         let tr = document.createElement("tr")
+        //         tr.innerHTML = `
+        //     <td>${title}</td>
+        //     <td>${author}</td>
+        //     <td>${LSBN}</td>
+        //     <td><a href = "#" id= "a">删除<a/></td>
+        // `
+        //         table.appendChild(tr)
+        //         detela = document.querySelectorAll("#a")
+        //     }
+        //    for(let i = 0 ;i <detela.length;i++){
+        //     detela[i].addEventListener("click",function(ev){
+        //     detela[i].parentElement.parentElement.remove()
+        // })
+        //    }
+        // })
+   
+    </script>
+</body>
+
+</html>

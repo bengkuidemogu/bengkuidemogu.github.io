@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       const arr = [1,2,7,3,11]
+       let num = 9
+        //谢一个函数，返回一个[索引，索引]
+        function fn(arr,num){
+            const map = new Map()
+            for(let i = 0;i<arr.length;i++){
+                //创建一个变量存储 num2   arr[i] + num2 = num
+                let num2 = num -arr[i]
+                //写出条件  在map里查找num2 找到了执行return   get（）通过键名找到键值 键值=数组元素索引   i= 元素索引
+                if (map.has(num2)) return [map.get(num2),i]
+                 //给map添加元素，[数组的值，数组索引]  索引变成了键值，元素变成了键名
+                map.set(arr[i],i)
+            }
+        }
+        console.log(fn(arr,num));
+    </script>
+</body>
+</html>
