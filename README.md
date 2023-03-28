@@ -36,7 +36,7 @@
 ## js作业库 2023-3-24
 27. <a href = "BOM\选项卡轮播\index.html">选项卡轮播</a>
 28. <a href = "\BOM\添加书籍\index.html">添加书籍</a>
-29. <a href = "\AJAX\瀑布流\index.html">瀑布流</a>
+29. <a href = "\AJAX\瀑布流\index2.html">瀑布流</a>
 30. <a href = "\导航栏外部样式\index.html">导航栏外部样式</a>
 31. <a href = "\BOM\map\index.html">map练习</a>
 32. <a href = "\app\index.html">js模块化</a>

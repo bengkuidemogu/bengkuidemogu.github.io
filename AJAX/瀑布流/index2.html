@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>瀑布流</title>
+    <style>
+        #container {
+            position: relative;
+            width: 900px;
+            margin: 0 auto;
+            top:20px;
+            /* border: 1px solid red; */
+
+        }
+        .app{
+            width: 100%;
+            height: 100vh;
+            opacity: .6;
+            background-color: black;
+        }
+        .card {
+            position: absolute;
+        }
+
+        .card .card-img-top {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="">
+    <nav class="navbar navbar-expand-lg text-bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">图库商城APP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">风景</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            人物
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">男性</a></li>
+                            <li><a class="dropdown-item" href="#">女性</a></li>
+                            <li><a class="dropdown-item" href="#">儿童</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">动物</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success text-bg-warning" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="card-group" id="container">
+        <!-- <div class="wf-div card">
+            <img class="wf-img card-img-top" src="" alt="">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">作者：Card title</h5>
+            <p class="card-text">描述:Thit longer.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-body-secondary">下载:Last updated 3 mins ago</small>
+        </div> -->
+    </div>
+    <script>
+        // const url = `https://api.unsplash.com/photos/random?count=20&client_id=LMC4yPkAL3R5HyXt52SB-JlOx0rTZj0s3DM1kW6Uw-0`
+        const url = `https://api.unsplash.com/photos/random?count=20&client_id=F7jDPm1Dlmny1N92mXf5k8Bc95cEQnoA_93Ifrob1Fk`
+        const oContainer = document.querySelector('#container')
+        const column = 3
+        const gap = 10
+        let heightArr = [0, 0, 0]
+        let on = true
+        //fetch data
+        function waterFall(api) {
+            let fetchData = async function (api) {
+                return await (await fetch(api)).json()
+            }
+            fetchData(api).then(data => {
+                for (let i = 0; i < data.length; i++) {
+                    let img = document.createElement('img')
+                    // let datasrc = document.createAttribute('data-src')
+                    // datasrc.value = data[i].urls.regular
+                    // img.setAttribute(datasrc)
+                    img.className = 'card-img-top lazy'
+                    img.src = data[i].urls.regular
+                    // img.abc = data[i].urls.regular
+                    let div = document.createElement('div')
+                    div.className = 'card'
+                    div.style.width = (oContainer.offsetWidth - gap * (column - 1)) / column + 'px'
+                    div.style.height = (parseFloat(div.style.width) / data[i].width) * data[i].height + 160 + 'px'
+                    minHeightColumn = getMinHeightColumn(heightArr)
+                    div.style.top = heightArr[minHeightColumn]  + 'px'
+                    div.style.left = minHeightColumn * (parseFloat(div.style.width) + gap) + 'px'
+
+                    heightArr[minHeightColumn] += parseInt(div.style.height)
+                    div.appendChild(img)
+                    let cardBody = document.createElement('div')
+                    cardBody.className = "card-body"
+                    cardBody.innerHTML = `<h5 class="card-title">${data[i].user.name}</h5>
+    <p class="card-text">${data[i].alt_description}</p>`
+                    div.appendChild(cardBody)
+
+                    let cardFooter = document.createElement('div')
+                    cardFooter.className = "card-footer"
+                    cardFooter.innerHTML = `<small class="text-body-secondary">下载：${data[i].downloads}</small>`
+                    div.appendChild(cardFooter)
+                    oContainer.appendChild(div)
+                }
+                on = true
+                //
+            let imgArr = document.querySelectorAll(".card-img-top")
+            console.log(imgArr);
+            for(let i =0 ;i <imgArr.length,i++;){
+                imgArr[i].addEventListener("click",(ev)=>{
+                    let div =document.createElement("div")
+                    let img = document.createElement("img")
+                    img.src = ev.target.src
+                    console.log();
+                    div.className = "app"
+                })
+            }
+            })
+
+            function getMinHeightColumn(arr) {
+                return arr.indexOf(Math.min.apply(null, arr))
+            }
+        }
+        waterFall(url)
+        window.onscroll = function () {
+            const { scrollHeight: a, scrollTop: b, clientHeight: c } = document.documentElement
+            if (a - Math.abs(b) <= c) {
+                if (on) {
+                    on = false
+                    console.log('可以加载了')
+                    waterFall(url)
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>
